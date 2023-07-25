@@ -1,0 +1,28 @@
+fragment BlogPostPreviewFields on BlogPost {
+  sys {
+    id
+  }
+  title
+  preface
+}
+
+query GetBlogPostPreviews($limit: Int) {
+  blogPostCollection(limit: $limit, order: [title_ASC]) {
+    items {
+      ...BlogPostPreviewFields
+    }
+  }
+}
+
+fragment BlogPostFields on BlogPost {
+  title
+  body
+}
+
+query GetBlogPostById($id: String!) {
+  blogPostCollection(limit: 1, where: { sys: { id: $id } }) {
+    items {
+      ...BlogPostFields
+    }
+  }
+}

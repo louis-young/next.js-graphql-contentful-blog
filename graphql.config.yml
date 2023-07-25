@@ -1,0 +1,2 @@
+schema: "./src/library/graphql/generated/graphql.schema.graphql"
+documents: "./src/library/graphql/documents/**/*.graphql"

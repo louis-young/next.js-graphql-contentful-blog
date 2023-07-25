@@ -1,0 +1,59 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "jest",
+    "jsx-a11y",
+    "prettier",
+    "react",
+    "react-hooks",
+    "testing-library",
+    "perfectionist",
+    "cypress"
+  ],
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:perfectionist/recommended-natural"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/consistent-type-exports": "error",
+    "@typescript-eslint/consistent-type-imports": "error",
+    "no-console": "warn",
+    "no-bitwise": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.ts", "**/*.test.tsx"],
+      "extends": ["plugin:jest/recommended", "plugin:testing-library/react"],
+      "plugins": ["jest", "testing-library"]
+    },
+    {
+      "files": ["cypress.config.ts", "cypress/**/*.ts", "cypress/**/*.cy.ts"],
+      "parserOptions": {
+        "project": ["cypress/tsconfig.json"]
+      },
+      "extends": ["plugin:cypress/recommended"],
+      "plugins": ["cypress"]
+    }
+  ]
+}
